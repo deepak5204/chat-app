@@ -5,7 +5,6 @@ import { auth } from '../firebase';
 
 
 function Login() {
-
   const [err, setErr] = useState(false);
   const navigate = useNavigate();
 
@@ -15,9 +14,8 @@ function Login() {
     const password = e.target[1].value;
 
     try {
-      await signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
-
     } catch (err) {
       setErr(true);
     }

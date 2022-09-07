@@ -31,10 +31,13 @@ function Register() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+
+            // Update profile
             await updateProfile(res.user, {
               displayName,
               photoURL: downloadURL,
             });
+
             // create user on firestore
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
@@ -43,6 +46,7 @@ function Register() {
               photoURL: downloadURL,
             });
 
+            // create empty user chats on firebase
             await setDoc(doc(db, "usersChat", res.user.uid), {});
             navigate("/")
 
@@ -62,7 +66,7 @@ function Register() {
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="display name" />
           <input type="email" placeholder="email" />
-          <input type="current-password" placeholder="password" />
+          <input type="password" placeholder="password" />
           <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="" />
