@@ -1,13 +1,14 @@
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 // import Login from "./pages/Login";
-// import Register from "./pages/Register";
+import Register from "./pages/Register";
 import "./style.scss";
 
 function App() {
   return (
     <div >
      {/* <Login /> */}
-     <Home />
+     {/* <Home /> */}
+     <Register />
     </div>
   );
 }
