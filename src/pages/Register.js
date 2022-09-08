@@ -31,7 +31,6 @@ function Register() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-
             // Update profile
             await updateProfile(res.user, {
               displayName,
@@ -48,8 +47,7 @@ function Register() {
 
             // create empty user chats on firebase
             await setDoc(doc(db, "usersChat", res.user.uid), {});
-            navigate("/")
-
+            navigate("/");
           });
         }
       );
@@ -66,7 +64,7 @@ function Register() {
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="display name" />
           <input type="email" placeholder="email" />
-          <input type="password" placeholder="password" />
+          <input type="current-password" placeholder="password" />
           <input style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="" />
@@ -75,7 +73,9 @@ function Register() {
           <button>Sign Up</button>
           {err && <span>Something went wrong</span>}
         </form>
-        <p>You do have an account? <Link to="/login">Login</Link></p>
+        <p>
+          You do have an account? <Link to="/register"> Login </Link>
+        </p>
       </div>
     </div>
   );
