@@ -44,6 +44,7 @@ function Register() {
               email,
               photoURL: downloadURL,
             });
+           
 
             // create empty user chats on firebase
             await setDoc(doc(db, "usersChat", res.user.uid), {});
@@ -59,7 +60,7 @@ function Register() {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Lama Chat</span>
+        <span className="logo">Chat app</span>
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="display name" />
@@ -79,6 +80,6 @@ function Register() {
       </div>
     </div>
   );
-}
+};
 
 export default Register;
